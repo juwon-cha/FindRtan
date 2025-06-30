@@ -37,8 +37,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         audioSource = GetComponent<AudioSource>();
-        
-        //박준현 깃 연동 확인용 주석입니다 곧 삭제할 예정입니다.
+
     }
 
     void Update()
