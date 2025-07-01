@@ -710,11 +710,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1954282662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410b9da504637a646b7d582798a4743e, type: 3}
+  m_Script: {fileID: 11500000, guid: 958c1aca8a85f234fa99088bd0a4e996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 7741521703844890850, guid: a328e16088c99034ba187f0ace008a4a, type: 3}
-  front: {fileID: 4124502744910402459, guid: 02c59a6d321d22640ba2333923c8224e, type: 3}
+  card: {fileID: 7741521703844890850, guid: c8e6e3fd23475b544901601d69f6ed42, type: 3}
 --- !u!4 &1954282664
 Transform:
   m_ObjectHideFlags: 0
