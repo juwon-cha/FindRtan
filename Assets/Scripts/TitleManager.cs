@@ -9,7 +9,7 @@ public class TitleManager : MonoBehaviour
     {
         Debug.Log("Load Level Select Scene");
 
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene("DifficultyScene");
     }
 
     public void OnClickCardCollectionBtn()

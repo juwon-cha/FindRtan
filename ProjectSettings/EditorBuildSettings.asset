@@ -11,5 +11,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/DifficultyScene.unity
+    guid: 02d6d3d44ab11d34c8ad339a223e9fe4
+  - enabled: 1
+    path: Assets/Scenes/LevelEasy.unity
+    guid: fc5a3200ca8fb784ca6715442a1da95c
+  - enabled: 1
+    path: Assets/Scenes/LevelHard.unity
+    guid: ba800eb5c31b38049a0f11c2bb375a27
+  - enabled: 1
+    path: Assets/Scenes/LevelNormal.unity
+    guid: 93f1550791b8f2a43aec06bbae0b9436
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 23e9a84563f16174cac10734bddd2d68, type: 2}
