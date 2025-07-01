@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Manager()
     {
         Time.timeScale = 0;
-        Camera.main.backgroundColor = new Color(187f, 198f, 201f, 1f);
+        Camera.main.backgroundColor = new Color(107f, 108f, 108f, 1f);
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1;
         Invoke("ResetBackground", 3f);
