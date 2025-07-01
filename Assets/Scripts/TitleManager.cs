@@ -16,6 +16,6 @@ public class TitleManager : MonoBehaviour
     {
         Debug.Log("Load Card Collection Scene");
 
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene("CardbookScene");
     }
 }
