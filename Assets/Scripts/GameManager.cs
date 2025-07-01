@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip Shaclip;
+    public AudioClip Golclip;
+    public AudioClip Sanclip;
+    public AudioClip Maclip;
+    public AudioClip Tuclip;
 
     public int cardCount = 0;
     float time = 0.0f;
@@ -120,12 +125,14 @@ public class GameManager : MonoBehaviour
     }
     void GoldenRtan()
     {
+        audioSource.PlayOneShot(Golclip);
         Camera.main.backgroundColor = new Color(166f, 124f, 0f, 1f);
         time = time - 5f;
         Invoke("ResetBackground", 1f);
     }
     public void InvokeSharingan()
     {
+        audioSource.PlayOneShot(Shaclip);
         Camera.main.backgroundColor = Color.red;
         foreach (Card card in FindObjectsOfType<Card>())
         {
@@ -135,6 +142,7 @@ public class GameManager : MonoBehaviour
     }
     void Sandevistan()
     {
+        audioSource.PlayOneShot(Sanclip);
         Time.timeScale = 0.4f;
         Camera.main.backgroundColor = Color.yellow;
         Invoke("ResetTimeScale",3f);
@@ -147,6 +155,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Manager()
     {
+        audioSource.PlayOneShot(Maclip);
         Time.timeScale = 0;
         Camera.main.backgroundColor = new Color(107f, 108f, 108f, 1f);
         yield return new WaitForSecondsRealtime(3f);

@@ -1409,6 +1409,11 @@ MonoBehaviour:
   endTxt: {fileID: 92412129}
   timeTxt: {fileID: 2098197581}
   clip: {fileID: 8300000, guid: 9c30490c2d9d4c34d845e304b83da68f, type: 3}
+  Shaclip: {fileID: 8300000, guid: 930fcd8a95752ea459a6944a628d8656, type: 3}
+  Golclip: {fileID: 8300000, guid: 9a97ec45ebef0234296d2e2bc4e9d294, type: 3}
+  Sanclip: {fileID: 8300000, guid: 06425706c6b4b9d4fb873ab6908fc0b8, type: 3}
+  Maclip: {fileID: 8300000, guid: 98f3c4f5b0dfe2149a3d960ce1a7ad39, type: 3}
+  Tuclip: {fileID: 8300000, guid: b779546e7977bb649b47c35c3ea40f45, type: 3}
   cardCount: 0
 --- !u!4 &928081304
 Transform:
