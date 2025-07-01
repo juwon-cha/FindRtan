@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
         timeTxt.text = time.ToString("N2");
 
-        if (time >= 30f)
+        if (time >= 180f)
         {
             GameOver();
         }

@@ -29,7 +29,7 @@ public class Card : MonoBehaviour
     public void Setting(int number)
     {
         index = number;
-        frontImage.sprite = Resources.Load<Sprite>($"Images/rtan{index}");
+        frontImage.sprite = Resources.Load<Sprite>($"Images/Card{index}");
     }
 
     public void DestroyCard()

@@ -3,41 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEditor;
 
-public class Board : MonoBehaviour
+public class BoardNormal : MonoBehaviour
 {
     public GameObject card;
-
     void Start()
     {
         // 카드 섞기
-        int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-        // 조건에 따라 정렬
-        //arr = arr.OrderBy(x => UnityEngine.Random.Range(0f, 7f)).ToArray();
+        int[] Narr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        Narr = Narr.Take(10).ToArray();
+        Narr = Narr.OrderBy(x => UnityEngine.Random.Range(0f, 14f)).ToArray();
+        int[] Nspc = { 15, 16, 17 };
+        Nspc = Nspc.OrderBy(x => UnityEngine.Random.Range(15f, 17f)).ToArray();
+        Nspc = Nspc.Take(2).ToArray();
 
-        Shuffle(arr);
+        int[] Ncom = Narr.Concat(Nspc).ToArray();
+        int[] Nfinaldeck = Ncom.Concat(Ncom).ToArray();
+        Shuffle(Nfinaldeck);
 
         // 셔플 디버깅
         //string arrayString = string.Join(", ", arr);
         //Debug.Log(arrayString);
 
         // 카드 배치
-        for(int i = 0; i < 16; ++i)
+        for (int i = 0; i < 24; ++i)
         {
             GameObject go = Instantiate(card, this.transform);
 
-            float x = (i % 4) * 1.4f - 2.1f;
-            float y = (i / 4) * 1.4f -3f;
+            float x = (i % 6) * 2.4f - 6.0f; 
+            float y = (i / 6) * -1.8f +2f;
 
             go.transform.position = new Vector2(x, y);
+            go.transform.localScale = new Vector2(4.0f, 4.0f);
 
             // 카드 인덱스 설정
-            go.GetComponent<Card>().Setting(arr[i]);
+            go.GetComponent<Card>().Setting(Nfinaldeck[i]);
         }
 
-        GameManager.Instance.cardCount = arr.Length;
+        GameManager.Instance.cardCount = Nfinaldeck.Length;
     }
-
     private void Shuffle(int[] array)
     {
         System.Random rand = new System.Random();
