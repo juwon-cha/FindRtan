@@ -384,7 +384,6 @@ GameObject:
   - component: {fileID: 309080636}
   - component: {fileID: 309080635}
   - component: {fileID: 309080638}
-  - component: {fileID: 309080639}
   m_Layer: 5
   m_Name: CollectionBtn
   m_TagString: Untagged
@@ -521,18 +520,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.98039216, g: 0.98039216, b: 0, a: 0.78431374}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
---- !u!114 &309080639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309080633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d05a19bd8331814e83edd3528bb23a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &465310558
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +682,6 @@ GameObject:
   - component: {fileID: 1327967121}
   - component: {fileID: 1327967120}
   - component: {fileID: 1327967119}
-  - component: {fileID: 1327967123}
   - component: {fileID: 1327967124}
   m_Layer: 5
   m_Name: LevelBtn
@@ -833,18 +819,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327967116}
   m_CullTransparentMesh: 1
---- !u!114 &1327967123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327967116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09fc0908b067f34fa9e666ff4cc706f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1327967124
 MonoBehaviour:
   m_ObjectHideFlags: 0
