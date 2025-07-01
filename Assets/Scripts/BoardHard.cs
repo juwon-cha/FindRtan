@@ -15,8 +15,8 @@ public class BoardHard : MonoBehaviour
         int[] Harr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
         Harr = Harr.Take(15).ToArray();
         Harr = Harr.OrderBy(x => UnityEngine.Random.Range(0f, 14f)).ToArray();
-        int[] Hspc = { 15, 16, 17 };
-        Hspc = Hspc.OrderBy(x => UnityEngine.Random.Range(15f, 17f)).ToArray();
+        int[] Hspc = { 15, 16, 17,18, 19 };
+        Hspc = Hspc.OrderBy(x => UnityEngine.Random.Range(15f, 19f)).ToArray();
         Hspc = Hspc.Take(3).ToArray();
 
         int[] Hcom = Harr.Concat(Hspc).ToArray();
@@ -36,7 +36,7 @@ public class BoardHard : MonoBehaviour
             float y = (i / 6) * 1.3f - 4.0f;
 
             go.transform.position = new Vector2(x, y);
-            card.transform.localScale = new Vector2(1.2f, 1.2f);
+            go.transform.localScale = new Vector2(2f, 2f);
 
             // 카드 인덱스 설정
             go.GetComponent<Card>().Setting(Hfinaldeck[i]);

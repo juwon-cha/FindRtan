@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
     public GameObject back;
 
     public Animator anim;
-    
+
     public SpriteRenderer frontImage;
 
     AudioSource audioSource;
@@ -23,7 +23,7 @@ public class Card : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void Setting(int number)
@@ -57,20 +57,20 @@ public class Card : MonoBehaviour
 
     public void OnClickCard()
     {
-        if(GameManager.Instance.secondCard != null)
+        if (GameManager.Instance.secondCard != null)
         {
             return;
         }
 
         // SoundManager를 통해 SFX 볼륨 조절
-        audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
+        //audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
 
         anim.SetBool("isOpen", true); // 애니메이션 CardFlip으로 전환
         front.SetActive(true);
         back.SetActive(false);
 
         // firstCard가 비어있다면,
-        if(GameManager.Instance.firstCard == null)
+        if (GameManager.Instance.firstCard == null)
         {
             // firstCard에 내 정보 저장
             GameManager.Instance.firstCard = this;
@@ -83,5 +83,21 @@ public class Card : MonoBehaviour
             // 게임매니저의 CheckMatched() 함수 호출
             GameManager.Instance.CheckMatched();
         }
+    }
+    public void OpenCard()
+    {
+        front.SetActive(true);
+        back.SetActive(false);
+    }
+    public void ClosingCard()
+    {
+        front.SetActive(false);
+        back.SetActive(true);
+    }
+    public void Sharingan()
+    {
+            OpenCard();
+            Invoke("ClosingCard", 3f);
+            
     }
 }
