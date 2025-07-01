@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
 
             cardCount -= 2;
 
+            if(firstCard.index == 16)
+            {
+                GoldenRtan();
+            }
+
             if(cardCount == 0)
             {
                 GameOver();
@@ -83,4 +88,13 @@ public class GameManager : MonoBehaviour
         endTxt.SetActive(true);
         Time.timeScale = 0f;
     }
+    void GoldenRtan()
+    {
+        time = time - 5f;
+    }
+    void Sharingan()
+    {
+
+    }
+
 }
