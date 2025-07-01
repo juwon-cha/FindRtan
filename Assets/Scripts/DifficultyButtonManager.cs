@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DifficultyButtonManaer : MonoBehaviour
+public class DifficultyButtonManager : MonoBehaviour
 {
     public Button hardButton;
     public Text hardButtonTxt;
@@ -15,6 +15,7 @@ public class DifficultyButtonManaer : MonoBehaviour
 
     void Start()
     {
+        isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
         SetHardButtonState();
         noticePanel.SetActive(false);  // 시작할 때 안내판 꺼두기
     }
@@ -27,7 +28,7 @@ public class DifficultyButtonManaer : MonoBehaviour
         }
         else
         {
-            hardButtonTxt.color = Color.white;
+            hardButtonTxt.color = Color.black;
         }
     }
 
