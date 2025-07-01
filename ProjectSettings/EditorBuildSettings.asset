@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelHard.unity
     guid: ba800eb5c31b38049a0f11c2bb375a27
   - enabled: 1
+    path: Assets/Scenes/CardbookScene.unity
+    guid: a8920cfdcf8784e4f80068bd535b3baa
+  - enabled: 1
     path: Assets/Scenes/LevelNormal.unity
     guid: 93f1550791b8f2a43aec06bbae0b9436
   m_configObjects:

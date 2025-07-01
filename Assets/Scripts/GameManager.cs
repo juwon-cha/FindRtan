@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
 
     public void ActivateJeojjulTutor()
     {
+        audioSource.PlayOneShot(Tuclip);
         // 씬에 있는 모든 Card 컴포넌트를 가져옴
         Card[] allCards = FindObjectsOfType<Card>();
 
