@@ -26,7 +26,14 @@ public class AudioManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
+        audioSource.volume = 0.5f;
+
         audioSource.clip = clip;
         audioSource.Play();
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 }

@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         if(firstCard.index == secondCard.index)
         {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
 
             firstCard.DestroyCard();
             secondCard.DestroyCard();
@@ -82,6 +82,17 @@ public class GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
     }
+    // 일시정지
+    public void OnPauseButtonPressed()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void OnResumeButtonPressed()
+    {
+        Time.timeScale = 1f;
+    }
+
 
     void GameOver()
     {
