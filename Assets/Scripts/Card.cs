@@ -100,4 +100,17 @@ public class Card : MonoBehaviour
             Invoke("ClosingCard", 3f);
             
     }
+
+    // 저쩔튜터 효과를 위해 애니메이션 없이 즉시 앞면을 보여주는 함수
+    public void ForceOpen()
+    {
+        // 이미 열려있거나 파괴 과정에 있다면 실행하지 않음
+        if (anim.GetBool("isOpen"))
+        {
+            return;
+        }
+
+        front.SetActive(true);
+        back.SetActive(false);
+    }
 }

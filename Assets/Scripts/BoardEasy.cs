@@ -14,7 +14,7 @@ public class BoardEasy : MonoBehaviour
                 int[] Earr = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
                 Earr = Earr.Take(5).ToArray();
                 Earr = Earr.OrderBy(x => UnityEngine.Random.Range(0f, 14f)).ToArray();
-                int[] Espc = {15,16,17,18,19};
+                int[] Espc = {15,16,17,18, 19};
                 Espc = Espc.OrderBy(x => UnityEngine.Random.Range(15f, 19f)).ToArray();
                 Espc = Espc.Take(1).ToArray();
 

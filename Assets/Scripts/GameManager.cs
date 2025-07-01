@@ -70,18 +70,21 @@ public class GameManager : MonoBehaviour
             {
                 InvokeSharingan();
             }
-
-            if(firstCard.index == 16)
+            else if(firstCard.index == 16)
             {
                 GoldenRtan();
             }
-            if(firstCard.index == 17)
+            else if(firstCard.index == 17)
             {
                 Sandevistan();
             }
-            if(firstCard.index == 18)
+            else if(firstCard.index == 18)
             {
                 StartCoroutine(Manager());
+            }
+            else if(firstCard.index == 19)
+            {
+                ActivateJeojjulTutor();
             }
 
             if (cardCount == 0)
@@ -141,6 +144,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
     IEnumerator Manager()
     {
         Time.timeScale = 0;
@@ -149,8 +153,66 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Invoke("ResetBackground", 3f);
     }
+
     public void ResetBackground()
     {
         Camera.main.backgroundColor = originalColor;
+    }
+
+    public void ActivateJeojjulTutor()
+    {
+        // 씬에 있는 모든 Card 컴포넌트를 가져옴
+        Card[] allCards = FindObjectsOfType<Card>();
+
+        // 인덱스를 키로, 카드 리스트를 값으로 하는 딕셔너리 생성
+        Dictionary<int, List<Card>> cardsByIndex = new Dictionary<int, List<Card>>();
+
+        // 모든 카드를 순회하며 딕셔너리에 추가
+        // 인덱스별로 카드 두 장씩 들어감
+        foreach (Card card in allCards)
+        {
+            if (!cardsByIndex.ContainsKey(card.index))
+            {
+                cardsByIndex[card.index] = new List<Card>();
+            }
+            cardsByIndex[card.index].Add(card);
+        }
+
+        // 아직 맞춰지지 않은 완전한 쌍의 인덱스만 리스트에 저장
+        List<int> validPairKeys = new List<int>();
+        foreach (var pair in cardsByIndex)
+        {
+            if (pair.Value.Count == 2)
+            {
+                validPairKeys.Add(pair.Key);
+            }
+        }
+
+        // 보여줄 쌍이 있다면
+        if (validPairKeys.Count > 0)
+        {
+            // 유효한 인덱스 리스트에서 무작위로 하나를 선택
+            int randomKey = validPairKeys[Random.Range(0, validPairKeys.Count)];
+
+            // 선택된 인덱스를 사용해 원래 딕셔너리에서 카드 쌍을 가져옴
+            List<Card> pairToShow = cardsByIndex[randomKey];
+
+            // 카드 쌍 공개 코루틴 실행
+            StartCoroutine(RevealPairCoroutine(pairToShow[0], pairToShow[1]));
+        }
+    }
+
+    private IEnumerator RevealPairCoroutine(Card card1, Card card2)
+    {
+        // 카드를 즉시 앞면으로 뒤집기
+        card1.ForceOpen();
+        card2.ForceOpen();
+
+        // 1초 동안 보여줌
+        yield return new WaitForSeconds(1f);
+
+        // 다시 뒷면으로 뒤집음
+        card1.CloseCardInvoke();
+        card2.CloseCardInvoke();
     }
 }
