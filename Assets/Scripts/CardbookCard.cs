@@ -12,16 +12,13 @@ public class CardbookCard : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
 
+    private CardbookPanel cardbookPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        cardbookPanel = GameObject.Find("CardbookPanel").GetComponent<CardbookPanel>();
     }
 
     public void Setting(int number)
@@ -30,8 +27,12 @@ public class CardbookCard : MonoBehaviour
         Image.sprite = Resources.Load<Sprite>($"CardbookImages/card{index}");
     }
 
-    public void OnClickCard()
+    void OnMouseDown()
     {
         audioSource.PlayOneShot(clip);
+        if (cardbookPanel != null)
+        {
+            cardbookPanel.SetCard(Image.sprite, index);  // index도 같이 전달
+        }
     }
 }

@@ -439,7 +439,6 @@ GameObject:
   - component: {fileID: 655706592}
   - component: {fileID: 655706594}
   - component: {fileID: 655706593}
-  - component: {fileID: 655706595}
   m_Layer: 5
   m_Name: CopyImage
   m_TagString: Untagged
@@ -504,19 +503,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655706591}
   m_CullTransparentMesh: 1
---- !u!114 &655706595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655706591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67513a35241848546be727d3a41a7d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Image: {fileID: 0}
 --- !u!1 &663274198
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,8 +685,9 @@ GameObject:
   - component: {fileID: 1283762648}
   - component: {fileID: 1283762650}
   - component: {fileID: 1283762649}
+  - component: {fileID: 1283762651}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: CardbookPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -766,6 +753,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283762647}
   m_CullTransparentMesh: 1
+--- !u!114 &1283762651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283762647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67513a35241848546be727d3a41a7d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copyImage: {fileID: 655706593}
+  descriptionText: {fileID: 663274200}
 --- !u!1 &1535279615
 GameObject:
   m_ObjectHideFlags: 0
