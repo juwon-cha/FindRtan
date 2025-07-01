@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Screen.SetResolution(720, 1280, true);
+        Screen.SetResolution(1920, 1280, true);
 
         Time.timeScale = 1f;
 
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         if(firstCard.index == secondCard.index)
         {
-            audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
+            //audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
 
             firstCard.DestroyCard();
             secondCard.DestroyCard();

@@ -63,7 +63,7 @@ public class Card : MonoBehaviour
         }
 
         // SoundManager를 통해 SFX 볼륨 조절
-        audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
+        //audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
 
         anim.SetBool("isOpen", true); // 애니메이션 CardFlip으로 전환
         front.SetActive(true);
