@@ -1388,6 +1388,7 @@ GameObject:
   - component: {fileID: 842691388}
   - component: {fileID: 842691387}
   - component: {fileID: 842691386}
+  - component: {fileID: 842691390}
   m_Layer: 5
   m_Name: PauseBtn
   m_TagString: Untagged
@@ -1521,6 +1522,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -470}
   m_SizeDelta: {x: 360, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &842691390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842691385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &850304279
 GameObject:
   m_ObjectHideFlags: 0
