@@ -22,26 +22,10 @@ public class BoardEasy : MonoBehaviour
                 int[] Efinaldeck = Ecom.Concat(Ecom).ToArray();
                 Shuffle(Efinaldeck);
 
-                // 셔플 디버깅
-                //string arrayString = string.Join(", ", arr);
-                //Debug.Log(arrayString);
-
-                // 카드 배치
-                for (int i = 0; i < 12; ++i)
-                {
-                    GameObject go = Instantiate(card, this.transform);
-
-                    float x = (i % 4) * 2.4f - 3.6f;
-                    float y = (i / 4) * 2.8f - 3.6f;
-
-                    go.transform.position = new Vector2(x, y);
-                    go.transform.localScale = new Vector2(2f, 2f);
-                    // 카드 인덱스 설정
-                    go.GetComponent<Card>().Setting(Efinaldeck[i]);
-                }
-
                 GameManager.Instance.cardCount = Efinaldeck.Length;
                 GameManager.Instance.Level = 1;
+
+                StartCoroutine(EspawnCard(Efinaldeck));
     }
     private void Shuffle(int[] array)
     {
@@ -58,6 +42,22 @@ public class BoardEasy : MonoBehaviour
             int value = array[k];
             array[k] = array[n];
             array[n] = value;
+        }
+    }
+    IEnumerator EspawnCard(int[] deck)
+    {
+        for (int i = 0; i < 12; ++i)
+        {
+            GameObject go = Instantiate(card, this.transform);
+
+            float x = (i % 4) * 2.4f - 3.6f;
+            float y = (i / 4) * 2.8f - 3.6f;
+
+            go.transform.position = new Vector2(x, y);
+            go.transform.localScale = new Vector2(2f, 2f);
+            go.GetComponent<Card>().Setting(deck[i]);
+
+            yield return new WaitForSeconds(0.1f); // 코루틴은 무적이고 이거 알려주신 튜터님은 신이심 ㄹㅇ
         }
     }
 }

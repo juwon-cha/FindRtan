@@ -23,27 +23,11 @@ public class BoardHard : MonoBehaviour
         int[] Hfinaldeck = Hcom.Concat(Hcom).ToArray();
         Shuffle(Hfinaldeck);
 
-        // 셔플 디버깅
-        //string arrayString = string.Join(", ", arr);
-        //Debug.Log(arrayString);
-
-        // 카드 배치
-        for (int i = 0; i < 36; ++i)
-        {
-            GameObject go = Instantiate(card, this.transform);
-
-            float x = (i % 6) * 2.4f - 6.0f;
-            float y = (i / 6) * 1.3f - 4.0f;
-
-            go.transform.position = new Vector2(x, y);
-            go.transform.localScale = new Vector2(2f, 2f);
-
-            // 카드 인덱스 설정
-            go.GetComponent<Card>().Setting(Hfinaldeck[i]);
-        }
-
         GameManager.Instance.cardCount = Hfinaldeck.Length;
         GameManager.Instance.Level = 3;
+
+        StartCoroutine(HspawnCard(Hfinaldeck));
+
     }
     private void Shuffle(int[] array)
     {
@@ -60,6 +44,22 @@ public class BoardHard : MonoBehaviour
             int value = array[k];
             array[k] = array[n];
             array[n] = value;
+        }
+    }
+    IEnumerator HspawnCard(int[] deck)
+    {
+        for (int i = 0; i < 36; ++i)
+        {
+            GameObject go = Instantiate(card, this.transform);
+
+            float x = (i % 6) * 2.4f - 6.0f;
+            float y = (i / 6) * 1.3f - 4.0f;
+
+            go.transform.position = new Vector2(x, y);
+            go.transform.localScale = new Vector2(2f, 2f);
+            go.GetComponent<Card>().Setting(deck[i]);
+
+            yield return new WaitForSeconds(0.05f); // 코루틴은 무적이고 이거 알려주신 튜터님은 신이심 ㄹㅇ
         }
     }
 }

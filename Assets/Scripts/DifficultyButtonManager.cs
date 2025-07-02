@@ -17,8 +17,8 @@ public class DifficultyButtonManager : MonoBehaviour
 
     void Start()
     {
-        //isEasyCleared = true; // 테스트용(이지를 깬 상태로 가정)
-        //isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
+        isEasyCleared = true; // 테스트용(이지를 깬 상태로 가정)
+        isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
         
         SetHardButtonState();
         SetNormalButtonState();
