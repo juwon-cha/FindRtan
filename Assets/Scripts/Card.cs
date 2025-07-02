@@ -57,7 +57,7 @@ public class Card : MonoBehaviour
 
     public void OnClickCard()
     {
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
         if (GameManager.Instance.secondCard != null)
         {
             return;

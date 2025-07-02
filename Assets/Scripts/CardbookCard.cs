@@ -30,7 +30,7 @@ public class CardbookCard : MonoBehaviour
 
     void OnMouseDown()
     {
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
         Debug.Log("ÅÍÄ¡");
         if (cardbookPanel != null)
         {

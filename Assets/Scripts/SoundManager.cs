@@ -7,7 +7,15 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [Range(0, 1)]
-    public float sfxVolume = 1f;
+    //public float sfxVolume = 1f;
+    public float sfxVolume = 0.5f; // 전체 효과음 슬라이더 값
+
+    // 각 특수카드의 기본 음량 (슬라이더에 곱해질 값)
+    public float shariBase = 1f;
+    public float goldBase = 0.8f;
+    public float sandBase = 1f;
+    public float managerBase = 0.7f;
+    public float tutoBase = 0.6f;
 
     private void Awake()
     {
