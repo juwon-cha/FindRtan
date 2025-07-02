@@ -181,7 +181,17 @@ public class GameManager : MonoBehaviour
         float volume = SoundManager.Instance.goldBase * SoundManager.Instance.sfxVolume;
         audioSource.PlayOneShot(Golclip, volume);
         Camera.main.backgroundColor = new Color(166f, 124f, 0f, 1f);
-        time = time - 5f;
+
+        // 게임 시작 후 5초 이내에 골든 르탄을 찾았을 때 시간이 음수가 되는 문제 처리
+        if(time > 5f)
+        {
+            time = time - 5f;
+        }
+        else
+        {
+            time = 0f;
+        }
+        
         Invoke("ResetBackground", 1f);
     }
 
