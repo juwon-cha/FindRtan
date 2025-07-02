@@ -244,6 +244,8 @@ public class GameManager : MonoBehaviour
         // 인덱스별로 카드 두 장씩 들어감
         foreach (Card card in allCards)
         {
+            if (card.gameObject == null) continue;//왜인지 진짜 모르겠는데 오브젝트가 null일때가 있더라구요 그러면 스킵하는 코드입니다.
+
             if (!cardsByIndex.ContainsKey(card.index))
             {
                 cardsByIndex[card.index] = new List<Card>();
