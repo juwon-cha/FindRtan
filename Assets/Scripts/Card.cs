@@ -98,7 +98,7 @@ public class Card : MonoBehaviour
     public void Sharingan()
     {
         OpenCard();
-        Invoke("ClosingCard", 3f);
+        Invoke("CloseCard", 3f);
     }
 
     private void FlipCard(bool open)

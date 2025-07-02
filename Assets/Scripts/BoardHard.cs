@@ -56,7 +56,7 @@ public class BoardHard : MonoBehaviour
             float y = (i / 6) * 1.3f - 4.0f;
 
             go.transform.position = new Vector2(x, y);
-            go.transform.localScale = new Vector2(2f, 2f);
+            go.transform.localScale = new Vector2(1f, 1f);
             go.GetComponent<Card>().Setting(deck[i]);
 
             yield return new WaitForSeconds(0.05f); // 코루틴은 무적이고 이거 알려주신 튜터님은 신이심 ㄹㅇ
