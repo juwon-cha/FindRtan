@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private Color originalColor;
     private bool isUrgent = false;
+    private bool isTimePaused = false;
 
     private void Awake()
     {
@@ -55,7 +56,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
+        if(!isTimePaused)
+        {
+            time += Time.deltaTime;
+        }
 
         timeTxt.text = time.ToString("N2");
 
@@ -153,13 +157,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-
     void GameOver()
     {
         AudioManager.Instance.SetPitch(1f);
         endTxt.SetActive(true);
         Time.timeScale = 0f;
     }
+
     void GoldenRtan()
     {
         float volume = SoundManager.Instance.goldBase * SoundManager.Instance.sfxVolume;
@@ -168,6 +172,7 @@ public class GameManager : MonoBehaviour
         time = time - 5f;
         Invoke("ResetBackground", 1f);
     }
+
     public void InvokeSharingan()
     {
         float volume = SoundManager.Instance.shariBase * SoundManager.Instance.sfxVolume;
@@ -179,6 +184,7 @@ public class GameManager : MonoBehaviour
             Invoke("ResetBackground", 3f);
         }
     }
+
     void Sandevistan()
     {
         float volume = SoundManager.Instance.sandBase * SoundManager.Instance.sfxVolume;
@@ -188,6 +194,7 @@ public class GameManager : MonoBehaviour
         Invoke("ResetTimeScale",3f);
         Invoke("ResetBackground", 3f);
     }
+
     void ResetTimeScale()
     {
         Time.timeScale = 1f;
@@ -197,10 +204,12 @@ public class GameManager : MonoBehaviour
     {
         float volume = SoundManager.Instance.managerBase * SoundManager.Instance.sfxVolume;
         audioSource.PlayOneShot(Maclip, volume);
-        Time.timeScale = 0;
         Camera.main.backgroundColor = new Color(107f, 108f, 108f, 1f);
+
+        isTimePaused = true;
         yield return new WaitForSecondsRealtime(3f);
-        Time.timeScale = 1;
+        isTimePaused = false;
+
         Invoke("ResetBackground", 3f);
     }
 
