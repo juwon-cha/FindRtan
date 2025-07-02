@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
         }
 
         timeTxt.text = time.ToString("N2");
+        if (time > 60)
+        {
+            timeTxt.text = "60.00";
+        }
 
         if (!isUrgent && time >= 10f)
         {
@@ -131,7 +135,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    GameOver();
+                    Invoke("GameOver", 0.4f);
                 }
                 
             }
@@ -278,12 +282,12 @@ public class GameManager : MonoBehaviour
     }
     public void EasyClear()
     {
-        GameOver();
+        Invoke("GameOver", 0.4f);
         DifficultyButtonManager.isEasyCleared = true;
     }
     public void NormalClear()
     {
-        GameOver();
+        Invoke("GameOver",0.4f);
         DifficultyButtonManager.isNormalCleared = true;
     }
 
