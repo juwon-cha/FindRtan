@@ -4,6 +4,15 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ESpecialCard
+{
+    SHARINGAN = 15,
+    GOLDENRTAN,
+    SANDEVISTAN,
+    AJJULMANAGER,
+    JEOJJULTUTOR
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -102,23 +111,23 @@ public class GameManager : MonoBehaviour
 
             cardCount -= 2;
 
-            if(firstCard.index == 15)
+            if(firstCard.index == (int)ESpecialCard.SHARINGAN)
             {
                 InvokeSharingan();
             }
-            else if(firstCard.index == 16)
+            else if(firstCard.index == (int)ESpecialCard.GOLDENRTAN)
             {
                 GoldenRtan();
             }
-            else if(firstCard.index == 17)
+            else if(firstCard.index == (int)ESpecialCard.SANDEVISTAN)
             {
                 Sandevistan();
             }
-            else if(firstCard.index == 18)
+            else if(firstCard.index == (int)ESpecialCard.AJJULMANAGER)
             {
                 StartCoroutine(Manager());
             }
-            else if(firstCard.index == 19)
+            else if(firstCard.index == (int)ESpecialCard.JEOJJULTUTOR)
             {
                 ActivateJeojjulTutor();
             }
@@ -254,13 +263,15 @@ public class GameManager : MonoBehaviour
         // 인덱스별로 카드 두 장씩 들어감
         foreach (Card card in allCards)
         {
-            if (card.gameObject == null) continue;//왜인지 진짜 모르겠는데 오브젝트가 null일때가 있더라구요 그러면 스킵하는 코드입니다.
-
-            if (!cardsByIndex.ContainsKey(card.index))
+            // 튜터 특수 카드는 제외 -> 튜터 카드가 사라지면서 자신을 찾으면 에러
+            if(card.index != (int)ESpecialCard.JEOJJULTUTOR)
             {
-                cardsByIndex[card.index] = new List<Card>();
+                if (!cardsByIndex.ContainsKey(card.index))
+                {
+                    cardsByIndex[card.index] = new List<Card>();
+                }
+                cardsByIndex[card.index].Add(card);
             }
-            cardsByIndex[card.index].Add(card);
         }
 
         // 아직 맞춰지지 않은 완전한 쌍의 인덱스만 리스트에 저장
