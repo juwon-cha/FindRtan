@@ -17,6 +17,7 @@ public class CardbookCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
         cardbookPanel = GameObject.Find("CardbookPanel").GetComponent<CardbookPanel>();
     }
@@ -30,6 +31,7 @@ public class CardbookCard : MonoBehaviour
     void OnMouseDown()
     {
         audioSource.PlayOneShot(clip);
+        Debug.Log("터치");
         if (cardbookPanel != null)
         {
             cardbookPanel.SetCard(Image.sprite, index);  // index도 같이 전달
