@@ -17,8 +17,8 @@ public class DifficultyButtonManager : MonoBehaviour
 
     void Start()
     {
-        isEasyCleared = true; // 테스트용(이지를 깬 상태로 가정)
-        isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
+        //isEasyCleared = true; // 테스트용(이지를 깬 상태로 가정)
+        //isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
         
         SetHardButtonState(); //하드 버튼 활성화 상태 여부
         SetNormalButtonState(); // 노말 버튼 활성화 상태 여부
@@ -46,11 +46,11 @@ public class DifficultyButtonManager : MonoBehaviour
     {
         if (!isEasyCleared)
         {
-            normalButtonTxt.color = Color.gray; //이지를 못깼으면 회색
+            normalButtonTxt.color = Color.black; //이지를 못깼으면 회색
         }
         else
         {
-            normalButtonTxt.color = Color.black; //이지를 클리어 했다면 검정색
+            normalButtonTxt.color = Color.white; //이지를 클리어 했다면 검정색
         }
     }
 
