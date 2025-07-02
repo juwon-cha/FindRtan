@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Card firstCard;
     public Card secondCard;
 
+    public GameObject bg;
     public GameObject endTxt;
     public Text timeTxt;
 
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
             timeTxt.text = "60.00";
         }
 
-        if (!isUrgent && time >= 10f)
+        if (!isUrgent && time >= 30f)
         {
             isUrgent = true;
 
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.SetPitch(1f);
         endTxt.SetActive(true);
+        bg.SetActive(true);
 
         isTimePaused = true;
         isGameOver = true;
