@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private Color originalColor;
     private bool isUrgent = false;
     private bool isTimePaused = false;
+    private bool isGameOver = false;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // isTimePaused가 false일 때만 시간 경과
         if(!isTimePaused)
         {
             time += Time.deltaTime;
@@ -93,7 +95,6 @@ public class GameManager : MonoBehaviour
     {
         if(firstCard.index == secondCard.index)
         {
-            //audioSource.PlayOneShot(clip);
             audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
 
             firstCard.DestroyCard();
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Invoke("GameOver", 0.4f);
+                    GameOver();
                 }
                 
             }
@@ -158,14 +159,21 @@ public class GameManager : MonoBehaviour
 
     public void OnResumeButtonPressed()
     {
-        Time.timeScale = 1f;
+        if(isGameOver)
+        {
+            isTimePaused = true;
+        }
+
+        isTimePaused = false;
     }
 
     void GameOver()
     {
         AudioManager.Instance.SetPitch(1f);
         endTxt.SetActive(true);
-        Time.timeScale = 0f;
+
+        isTimePaused = true;
+        isGameOver = true;
     }
 
     void GoldenRtan()
@@ -211,7 +219,7 @@ public class GameManager : MonoBehaviour
         Camera.main.backgroundColor = new Color(107f, 108f, 108f, 1f);
 
         isTimePaused = true;
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(5f);
         isTimePaused = false;
 
         Invoke("ResetBackground", 3f);
@@ -282,12 +290,12 @@ public class GameManager : MonoBehaviour
     }
     public void EasyClear()
     {
-        Invoke("GameOver", 0.4f);
+        GameOver();
         DifficultyButtonManager.isEasyCleared = true;
     }
     public void NormalClear()
     {
-        Invoke("GameOver",0.4f);
+        GameOver();
         DifficultyButtonManager.isNormalCleared = true;
     }
 
