@@ -15,7 +15,7 @@ public class DifficultyButtonManager : MonoBehaviour
 
     void Start()
     {
-        isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
+        //isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
         SetHardButtonState();
         noticePanel.SetActive(false);  // 시작할 때 안내판 꺼두기
     }
