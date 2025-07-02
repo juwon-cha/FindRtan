@@ -8,28 +8,30 @@ using UnityEditor;
 public class BoardEasy : MonoBehaviour
 {
     public GameObject card;
+
     void Start()
     {
-                // Ä«µå ¼¯±â
-                // ÀÏ¹Ý Ä«µå
-                int[] Earr = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-                Earr = Earr.Take(5).ToArray();
-                Earr = Earr.OrderBy(x => UnityEngine.Random.Range(0f, 14f)).ToArray();
-                
-                // Æ¯¼ö Ä«µå
-                int[] Espc = {15, 16, 17, 18, 19};
-                Espc = Espc.OrderBy(x => UnityEngine.Random.Range(15f, 19f)).ToArray();
-                Espc = Espc.Take(1).ToArray();
+        // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // ï¿½Ï¹ï¿½ Ä«ï¿½ï¿½
+        int[] Earr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        Earr = Earr.Take(5).ToArray();
+        Earr = Earr.OrderBy(x => UnityEngine.Random.Range(0f, 14f)).ToArray();
 
-                int[] Ecom = Earr.Concat(Espc).ToArray();
-                int[] Efinaldeck = Ecom.Concat(Ecom).ToArray();
-                Shuffle(Efinaldeck);
+        // Æ¯ï¿½ï¿½ Ä«ï¿½ï¿½
+        int[] Espc = { 15, 16, 17, 18, 19 };
+        Espc = Espc.OrderBy(x => UnityEngine.Random.Range(15f, 19f)).ToArray();
+        Espc = Espc.Take(1).ToArray();
 
-                GameManager.Instance.cardCount = Efinaldeck.Length;
-                GameManager.Instance.Level = 1;
+        int[] Ecom = Earr.Concat(Espc).ToArray();
+        int[] Efinaldeck = Ecom.Concat(Ecom).ToArray();
+        Shuffle(Efinaldeck);
 
-                StartCoroutine(EspawnCard(Efinaldeck));
+        GameManager.Instance.cardCount = Efinaldeck.Length;
+        GameManager.Instance.Level = 1;
+
+        StartCoroutine(EspawnCard(Efinaldeck));
     }
+
     private void Shuffle(int[] array)
     {
         System.Random rand = new System.Random();
@@ -38,15 +40,16 @@ public class BoardEasy : MonoBehaviour
         while (n > 1)
         {
             n--;
-            // 0ºÎÅÍ n »çÀÌÀÇ ÀÓÀÇÀÇ ÀÎµ¦½º k¸¦ ¼±ÅÃ
+            // 0ï¿½ï¿½ï¿½ï¿½ n ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ kï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             int k = rand.Next(n + 1);
 
-            // array[k]¿Í array[n]ÀÇ °ªÀ» ¼­·Î ±³È¯
+            // array[k]ï¿½ï¿½ array[n]ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
             int value = array[k];
             array[k] = array[n];
             array[n] = value;
         }
     }
+
     IEnumerator EspawnCard(int[] deck)
     {
         for (int i = 0; i < 12; ++i)
@@ -60,7 +63,7 @@ public class BoardEasy : MonoBehaviour
             go.transform.localScale = new Vector2(2f, 2f);
             go.GetComponent<Card>().Setting(deck[i]);
 
-            yield return new WaitForSeconds(0.1f); // ÄÚ·çÆ¾Àº ¹«ÀûÀÌ°í ÀÌ°Å ¾Ë·ÁÁÖ½Å Æ©ÅÍ´ÔÀº ½ÅÀÌ½É ¤©¤·
+            yield return new WaitForSeconds(0.1f); // ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ì°ï¿½ ï¿½Ë·ï¿½ï¿½Ö½ï¿½ Æ©ï¿½Í´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
 }

@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
     // 일시정지
     public void OnPauseButtonPressed()
     {
-        Time.timeScale = 0f;
+        isTimePaused = true;
     }
 
     public void OnResumeButtonPressed()
@@ -297,8 +297,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // 다시 뒷면으로 뒤집음
-        card1.CloseCardInvoke();
-        card2.CloseCardInvoke();
+        card1.CloseCard();
+        card2.CloseCard();
     }
     public void EasyClear()
     {
