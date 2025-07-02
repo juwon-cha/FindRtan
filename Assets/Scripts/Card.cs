@@ -1,13 +1,15 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    // 카드 뒤집기 연출 Ease 설정
+    public Ease ease = Ease.Linear;
+
     public GameObject front;
     public GameObject back;
-
-    public Animator anim;
 
     public SpriteRenderer frontImage;
 
@@ -16,14 +18,11 @@ public class Card : MonoBehaviour
 
     public int index = 0;
 
+    private bool mbIsOpened = false;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
-
     }
 
     public void Setting(int number)
@@ -43,32 +42,16 @@ public class Card : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void CloseCard()
-    {
-        Invoke("CloseCardInvoke", 0.5f);
-    }
-
-    public void CloseCardInvoke()
-    {
-        anim.SetBool("isOpen", false); // 애니메이션 CardIdle로 전환
-        front.SetActive(false);
-        back.SetActive(true);
-    }
-
     public void OnClickCard()
     {
         audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
+
         if (GameManager.Instance.secondCard != null)
         {
             return;
         }
 
-        // SoundManager를 통해 SFX 볼륨 조절
-        //audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
-
-        anim.SetBool("isOpen", true); // 애니메이션 CardFlip으로 전환
-        front.SetActive(true);
-        back.SetActive(false);
+        OpenCard();
 
         // firstCard가 비어있다면,
         if (GameManager.Instance.firstCard == null)
@@ -85,33 +68,55 @@ public class Card : MonoBehaviour
             GameManager.Instance.CheckMatched();
         }
     }
+
     public void OpenCard()
     {
-        front.SetActive(true);
-        back.SetActive(false);
-    }
-    public void ClosingCard()
-    {
-        front.SetActive(false);
-        back.SetActive(true);
-    }
-    public void Sharingan()
-    {
-            OpenCard();
-            Invoke("ClosingCard", 3f);
-            
-    }
-
-    // 저쩔튜터 효과를 위해 애니메이션 없이 즉시 앞면을 보여주는 함수
-    public void ForceOpen()
-    {
         // 이미 열려있거나 파괴 과정에 있다면 실행하지 않음
-        if (anim.GetBool("isOpen"))
+        if (mbIsOpened)
         {
             return;
         }
 
-        front.SetActive(true);
-        back.SetActive(false);
+        FlipCard(true);
+
+        mbIsOpened = true;
+    }
+
+    public void CloseCard()
+    {
+        Invoke("CloseCardInvoke", 0.5f);
+    }
+
+    public void CloseCardInvoke()
+    {
+        front.SetActive(false);
+        back.SetActive(true);
+
+        mbIsOpened = false;
+    }
+
+    public void Sharingan()
+    {
+        OpenCard();
+        Invoke("ClosingCard", 3f);
+    }
+
+    private void FlipCard(bool open)
+    {
+        Vector3 originalScale = transform.localScale;
+        Vector3 targetScale = new Vector3(0f, originalScale.y, originalScale.z);
+
+        var seq = DOTween.Sequence();
+
+        // 카드의 가로 크기를 0.2초 동안 0으로 만들어 납작하게 만듦
+        seq.Append(transform.DOScale(targetScale, 0.2f).SetEase(ease));
+        seq.AppendCallback(() =>
+        {
+            // 카드가 납작해졌을 때 앞/뒷면을 바꿈
+            front.SetActive(open);
+            back.SetActive(!open);
+        });
+        // 다시 0.2초 동안 가로 크기를 1로 만들어 펼쳐지게 함
+        seq.Append(transform.DOScale(originalScale, 0.2f).SetEase(ease));
     }
 }

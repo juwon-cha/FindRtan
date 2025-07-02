@@ -257,8 +257,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator RevealPairCoroutine(Card card1, Card card2)
     {
         // 카드를 즉시 앞면으로 뒤집기
-        card1.ForceOpen();
-        card2.ForceOpen();
+        card1.OpenCard();
+        card2.OpenCard();
 
         // 1초 동안 보여줌
         yield return new WaitForSeconds(1f);

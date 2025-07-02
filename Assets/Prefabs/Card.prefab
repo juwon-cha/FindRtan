@@ -230,7 +230,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4500886483194551302}
   - component: {fileID: 5179648783240677371}
-  - component: {fileID: 7827088630990976981}
   - component: {fileID: 8890705142365001956}
   m_Layer: 0
   m_Name: Card
@@ -268,33 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d53f69571b4694db9ff4ec931440ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ease: 1
   front: {fileID: 6233137200176327388}
   back: {fileID: 8162689770251977126}
-  anim: {fileID: 7827088630990976981}
   frontImage: {fileID: 5780072598065377079}
   clip: {fileID: 8300000, guid: 4beceeee40dbeb44486f8fbfde91ab40, type: 3}
   index: 0
---- !u!95 &7827088630990976981
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7741521703844890850}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0169487828ea04344a06a52786742fcb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &8890705142365001956
 AudioSource:
   m_ObjectHideFlags: 0
