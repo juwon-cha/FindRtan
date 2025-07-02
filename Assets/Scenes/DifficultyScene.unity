@@ -1437,10 +1437,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b497852677aaf54288da8720c44b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardButton: {fileID: 1747791251}
-  hardButtonTxt: {fileID: 535170487}
+  normalButton: {fileID: 0}
+  normalButtonTxt: {fileID: 0}
   noticePanel: {fileID: 776952545}
   noticeTxt: {fileID: 689836623}
+  hardPanel: {fileID: 1747791249}
+  isEasyCleared: 0
+  isNormalCleared: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

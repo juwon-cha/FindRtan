@@ -42,6 +42,7 @@ public class BoardNormal : MonoBehaviour
         }
 
         GameManager.Instance.cardCount = Nfinaldeck.Length;
+        GameManager.Instance.Level = 2;
     }
     private void Shuffle(int[] array)
     {

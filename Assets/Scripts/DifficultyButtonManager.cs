@@ -6,17 +6,22 @@ using UnityEngine.UI;
 
 public class DifficultyButtonManager : MonoBehaviour
 {
-    public Button hardButton;
-    public Text hardButtonTxt;
+    public Button normalButton;
+    public Text normalButtonTxt;
     public GameObject noticePanel;
     public Text noticeTxt;
+    public GameObject hardPanel;
 
-    private bool isNormalCleared = false;
+    public static bool isEasyCleared = false;
+    public static bool isNormalCleared = false;
 
     void Start()
     {
+        //isEasyCleared = true; // 테스트용(이지를 깬 상태로 가정)
         //isNormalCleared = true; // 테스트용(노말을 깬 상태로 가정)
+        
         SetHardButtonState();
+        SetNormalButtonState();
         noticePanel.SetActive(false);  // 시작할 때 안내판 꺼두기
     }
 
@@ -24,11 +29,28 @@ public class DifficultyButtonManager : MonoBehaviour
     {
         if (!isNormalCleared)
         {
-            hardButtonTxt.color = Color.gray;
+            hardPanel.SetActive(false);
         }
         else
         {
-            hardButtonTxt.color = Color.black;
+            hardPanel.SetActive(true);
+        }
+    }
+    private void Update()
+    {
+        SetHardButtonState();
+        SetNormalButtonState();
+    }
+
+    void SetNormalButtonState()
+    {
+        if (!isEasyCleared)
+        {
+            normalButtonTxt.color = Color.gray;
+        }
+        else
+        {
+            normalButtonTxt.color = Color.black;
         }
     }
 
@@ -39,7 +61,14 @@ public class DifficultyButtonManager : MonoBehaviour
 
     public void onClickNomal()
     {
-        SceneManager.LoadScene("LevelNormal");
+        if (!isEasyCleared)
+        {
+            ShowNotice("이지를 깨고 도전해주세요!");
+        }
+        else
+        {
+            SceneManager.LoadScene("LevelNormal");
+        }
     }
 
     public void onClickHard()

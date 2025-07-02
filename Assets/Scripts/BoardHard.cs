@@ -43,6 +43,7 @@ public class BoardHard : MonoBehaviour
         }
 
         GameManager.Instance.cardCount = Hfinaldeck.Length;
+        GameManager.Instance.Level = 3;
     }
     private void Shuffle(int[] array)
     {

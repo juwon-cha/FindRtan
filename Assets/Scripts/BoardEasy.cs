@@ -41,7 +41,8 @@ public class BoardEasy : MonoBehaviour
                 }
 
                 GameManager.Instance.cardCount = Efinaldeck.Length;
-        }
+                GameManager.Instance.Level = 1;
+    }
     private void Shuffle(int[] array)
     {
         System.Random rand = new System.Random();

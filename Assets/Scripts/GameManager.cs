@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public AudioClip Tuclip;
 
     public int cardCount = 0;
+    public int Level = 0;
     float time = 0.0f;
 
     private Color originalColor;
@@ -94,7 +96,20 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
-                GameOver();
+                //GameOver();
+                if (Level == 1)
+                {
+                    EasyClear();
+                }
+                else if (Level == 2)
+                {
+                    NormalClear();
+                }
+                else
+                {
+                    GameOver();
+                }
+                
             }
         }
         else
@@ -224,5 +239,15 @@ public class GameManager : MonoBehaviour
         // 다시 뒷면으로 뒤집음
         card1.CloseCardInvoke();
         card2.CloseCardInvoke();
+    }
+    public void EasyClear()
+    {
+        GameOver();
+        DifficultyButtonManager.isEasyCleared = true;
+    }
+    public void NormalClear()
+    {
+        GameOver();
+        DifficultyButtonManager.isNormalCleared = true;
     }
 }
