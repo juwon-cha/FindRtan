@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip failclip;
     public AudioClip Shaclip;
     public AudioClip Golclip;
     public AudioClip Sanclip;
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
     {
         if(firstCard.index == secondCard.index)
         {
+            audioSource.PlayOneShot(clip);
             //audioSource.PlayOneShot(clip, SoundManager.Instance.sfxVolume);
 
             firstCard.DestroyCard();
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(failclip);
             firstCard.CloseCard();
             secondCard.CloseCard();
         }

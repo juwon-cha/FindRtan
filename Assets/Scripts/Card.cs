@@ -57,6 +57,7 @@ public class Card : MonoBehaviour
 
     public void OnClickCard()
     {
+        audioSource.PlayOneShot(clip);
         if (GameManager.Instance.secondCard != null)
         {
             return;
