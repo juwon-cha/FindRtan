@@ -70,7 +70,12 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.SetPitch(1.5f); // 1.5배속
         }
 
-        if (time >= 180f)
+        if(time >= 30f) // 30초남았을때 빨간색으로 변하게 하기
+        {
+            timeTxt.color = Color.red;
+        }
+
+        if (time >= 60f)
         {
             GameOver();
         }
@@ -271,5 +276,10 @@ public class GameManager : MonoBehaviour
     {
         GameOver();
         DifficultyButtonManager.isNormalCleared = true;
+    }
+
+    public void ResetTimerColor() //재시작시 타이터 컬러를 복구하기 위함
+    {
+        timeTxt.color = originalColor;
     }
 }
