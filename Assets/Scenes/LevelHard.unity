@@ -1527,7 +1527,9 @@ MonoBehaviour:
   Sanclip: {fileID: 8300000, guid: 06425706c6b4b9d4fb873ab6908fc0b8, type: 3}
   Maclip: {fileID: 8300000, guid: 98f3c4f5b0dfe2149a3d960ce1a7ad39, type: 3}
   Tuclip: {fileID: 8300000, guid: b779546e7977bb649b47c35c3ea40f45, type: 3}
+  warningClip: {fileID: 8300000, guid: 9fb17aa98ce533b4a9ea5d70acb8d590, type: 3}
   cardCount: 0
+  Level: 0
 --- !u!4 &862135246
 Transform:
   m_ObjectHideFlags: 0

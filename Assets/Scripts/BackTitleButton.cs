@@ -7,6 +7,7 @@ public class BackTitleButton : MonoBehaviour
 {
     public void OnClickBack()
     {
+        AudioManager.Instance.SetPitch(1f);
         SceneManager.LoadScene("StartScene");
     }
 }

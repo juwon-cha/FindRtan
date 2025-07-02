@@ -24,12 +24,14 @@ public class GameManager : MonoBehaviour
     public AudioClip Sanclip;
     public AudioClip Maclip;
     public AudioClip Tuclip;
+    public AudioClip warningClip;
 
     public int cardCount = 0;
     public int Level = 0;
     float time = 0.0f;
 
     private Color originalColor;
+    private bool isUrgent = false;
 
     private void Awake()
     {
@@ -55,6 +57,17 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
 
         timeTxt.text = time.ToString("N2");
+
+        if (!isUrgent && time >= 10f)
+        {
+            isUrgent = true;
+
+            // 경고음 재생
+            AudioSource.PlayClipAtPoint(warningClip, Camera.main.transform.position, SoundManager.Instance.sfxVolume);
+
+            // BGM 배속
+            AudioManager.Instance.SetPitch(1.5f); // 1.5배속
+        }
 
         if (time >= 180f)
         {
@@ -135,6 +148,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        AudioManager.Instance.SetPitch(1f);
         endTxt.SetActive(true);
         Time.timeScale = 0f;
     }

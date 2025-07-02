@@ -36,4 +36,12 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.volume = volume;
     }
+
+    public void SetPitch(float pitch)
+    {
+        if (audioSource != null)
+        {
+            audioSource.pitch = pitch;
+        }
+    }
 }
