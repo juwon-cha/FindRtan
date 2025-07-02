@@ -26,7 +26,8 @@ public class AudioManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        audioSource.volume = 0.5f;
+        float savedBGM = PlayerPrefs.GetFloat("BGMVolume", 0.5f);
+        SetBGMVolume(savedBGM);
 
         audioSource.clip = clip;
         audioSource.Play();

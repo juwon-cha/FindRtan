@@ -25,7 +25,8 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             // 기본 sfx볼륨 절반으로 설정
-            sfxVolume = 0.5f;
+            //sfxVolume = 0.5f;
+            sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         }
         else
         {
